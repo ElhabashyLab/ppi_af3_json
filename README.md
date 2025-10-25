@@ -30,10 +30,11 @@ The input CSV must contain the following columns:
 - **uid2_copies**	Number of copies of the second protein to include in the model.
 
 Example:
-> job_name,uid1,uid2,uid1_copies,uid2_copies\\
-> Job1,P69905,P68871,2,2\\
-> Job2,Q9Y6K9,O00327,1,1\\
-
+```csv
+job_name,uid1,uid2,uid1_copies,uid2_copies
+Job1,P69905,P68871,2,2
+Job2,Q9Y6K9,O00327,1,1
+```
 
 **2. Script Parameters**
 User must specify inthe script:
