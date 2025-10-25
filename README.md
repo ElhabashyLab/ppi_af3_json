@@ -59,7 +59,7 @@ Each job directory will contain:
 ```
 
 
-# example data
+# Example data
 
 # License
 This script is released under the MIT License.
