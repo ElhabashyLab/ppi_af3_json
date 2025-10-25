@@ -49,7 +49,14 @@ Run the script from the command line or within a Python environment:
 # Output Structure
 The script will generate one directory per job in the specified working directory.
 Each job directory will contain:
-<pre> ``` <JobName>/ │ ├── <uid1>.fasta ├── <uid2>.fasta └── <JobName>.json ``` </pre>
+```
+<JobName>/
+│
+├── <uid1>.fasta
+├── <uid2>.fasta
+└── <JobName>.json
+```
+
 
 # example data
 
