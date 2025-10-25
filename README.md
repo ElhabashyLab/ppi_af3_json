@@ -3,6 +3,10 @@
 This Python script automates the creation of AlphaFold3-compatible JSON configuration files for protein complex modeling.
 It reads a list of protein pairs from a CSV file, retrieves their FASTA sequences from UniProt, saves them locally, and generates a JSON input file for each modeling job.
 
+> ⚠️ **Warning:**  
+> This script submits **only protein complexes** to AlphaFold3 (AF3).  
+> It is **not** designed for modeling single proteins or other molecule types.
+
 # Overview
 
 The script performs the following steps:
