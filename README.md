@@ -42,8 +42,8 @@ Job2,Q9Y6K9,O00327,1,1
 
 **2. Script Parameters**
 User must specify inthe script:
-- csv_file_path = "<path to the list of proteins>.csv"
-- working_dir = "<path to where the files will be generated>"
+- csv_file_path = "<path #to the list of proteins>.csv"
+- working_dir = "<path #to where the files will be generated>"
 - model_seeds = [3141592]  # You can define one or multiple random seeds
 
 # Usage
