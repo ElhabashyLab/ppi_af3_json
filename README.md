@@ -5,7 +5,7 @@ It reads a list of protein pairs from a CSV file, retrieves their FASTA sequence
 
 > ⚠️ **Warning:**  
 > This script submits **only protein complexes** to AlphaFold3 (AF3).  
-> It is **not** designed for modeling single proteins or other molecule types.
+> It is **not** designed for modeling other molecule types.
 
 # Overview
 
