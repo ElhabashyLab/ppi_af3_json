@@ -64,6 +64,7 @@ Each job directory will contain:
 
 
 # Example data
+The example input CSV file *example_dataset.csv* is provided in the repository to illustrate the expected data format and facilitate testing of the script.
 
 # License
 This script is released under the MIT License.
