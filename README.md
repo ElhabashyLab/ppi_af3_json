@@ -61,4 +61,4 @@ Each job directory will contain:
 # example data
 
 # License
-This project is released under the MIT License.
+This script is released under the MIT License.
