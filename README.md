@@ -30,9 +30,9 @@ The input CSV must contain the following columns:
 - **uid2_copies**	Number of copies of the second protein to include in the model.
 
 Example:
-> job_name,uid1,uid2,uid1_copies,uid2_copies
-> Job1,P69905,P68871,2,2
-> Job2,Q9Y6K9,O00327,1,1
+> job_name,uid1,uid2,uid1_copies,uid2_copies\\
+> Job1,P69905,P68871,2,2\\
+> Job2,Q9Y6K9,O00327,1,1\\
 
 
 **2. Script Parameters**
@@ -49,17 +49,9 @@ Run the script from the command line or within a Python environment:
 # Output Structure
 The script will generate one directory per job in the specified working directory.
 Each job directory will contain:
-<JobName>/
-│
-├── <uid1>.fasta
-├── <uid2>.fasta
-└── <JobName>.json
-
+<pre> ``` <JobName>/ │ ├── <uid1>.fasta ├── <uid2>.fasta └── <JobName>.json ``` </pre>
 
 # example data
 
 # License
 This project is released under the MIT License.
-Feel free to use and modify it with attribution.
-
-- 
