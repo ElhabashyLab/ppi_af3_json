@@ -7,7 +7,7 @@ import requests
 
 # Example usage
 csv_file_path = " <path to the list of the proteins to be modelled>.csv" 
-cache_file_path = " <path to the list of the proteins allready pulled>.csv" 
+cache_file_path = "<path to the CSV file listing previously downloaded UniProt FASTA sequences>.csv" 
 working_dir = "<path to where the files will be generated>" 
 model_seeds = [3141592]  # Set your desired seeds
 
@@ -105,12 +105,12 @@ def process_csv_and_generate_json(csv_file_path, working_dir, model_seeds, cache
 
 if os.path.exists(cache_file_path):
     cache_df = pd.read_csv(cache_file_path)
-    fasta_cache = dict(zip(cache_df['uid'], cache_df['fasta']))
+    cache = dict(zip(cache_df['uid'], cache_df['fasta']))
     print(f"Loaded FASTA cache from {cache_file_path}")
 else:
-    fasta_cache = {}
+    cache = {}
 
-cache = process_csv_and_generate_json(csv_file_path, working_dir, model_seeds, cache=fasta_cache)
+cache = process_csv_and_generate_json(csv_file_path, working_dir, model_seeds, cache=cache)
 
 pd.DataFrame(list(cache.items()), columns=['uid', 'fasta']).to_csv(cache_file_path, index=False)
 print(f"FASTA cache saved at {cache_file_path}")
