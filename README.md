@@ -13,6 +13,7 @@ The script performs the following steps:
 - Reads a CSV file containing the protein pairs to be modeled.
 - Fetches FASTA sequences from UniProt for each UniProt ID.
 - Saves FASTA files in corresponding job directories.
+- FASTA sequences retrieved from UniProt are automatically saved to a CSV cache file to facilitate repeated use.
 - Generates AlphaFold3 JSON input files that define the modeling parameters and protein sequences.
 Each modeling job is created as a separate directory within the specified working directory, containing:
 Two FASTA files (uid1.fasta, uid2.fasta) and a JSON file (job_name.json) formatted for AlphaFold3
@@ -41,8 +42,9 @@ Job2,Q9Y6K9,O00327,1,1
 ```
 
 **2. Script Parameters**
-User must specify inthe script:
+User must specify in the script:
 - csv_file_path = "<path #to the list of proteins>.csv"
+- cache_file_path = "<path #to the CSV file listing previously downloaded UniProt FASTA sequences>"
 - working_dir = "<path #to where the files will be generated>"
 - model_seeds = [3141592]  # You can define one or multiple random seeds
 
@@ -61,6 +63,7 @@ Each job directory will contain:
 ├── <uid2>.fasta
 └── <JobName>.json
 ```
+(The cache CSV file will be updated in place)
 
 
 # Example data
