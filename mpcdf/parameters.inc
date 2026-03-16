@@ -1,0 +1,7 @@
+AF3_USER_DIR=${HOME}/alphafold_3_0_0
+AF3_MODEL_DIR=${AF3_USER_DIR}/model
+AF3_JAX_CACHE_DIR=${AF3_USER_DIR}/jaxcache
+AF3_MSA_JSON_PATH=/ptmp/hadel/af3_cbra_thet8_screen/thet8_00000_q5sk37_pfka1/thet8_00000_q5sk37_pfka1.json
+AF3_MSA_OUTPUT_DIR=/ptmp/hadel/af3_cbra_thet8_screen
+AF3_INFERENCE_JSON_PATH=/ptmp/hadel/af3_cbra_thet8_screen/thet8_00000_q5sk37_pfka1/thet8_00000_q5sk37_pfka1_data.json
+AF3_INFERENCE_OUTPUT_DIR=/ptmp/hadel/af3_cbra_thet8_screen
