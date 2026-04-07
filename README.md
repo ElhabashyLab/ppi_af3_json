@@ -103,6 +103,7 @@ Install the required packages using pip:
 **Usage**
 Run the script from the command line or within a Python environment:
 > python3 AF3_json_1seed.py
+
 > python3 AF3_json_20seeds.py 
 
 **Example data**
