@@ -61,8 +61,9 @@ Job2,Q9Y6K9,O00327,1,1
 
 This repository includes two helper scripts for generating AlphaFold 3-compatible input files:
 
-# AF3_json_1seed.py
-# AF3_json_20seeds.py
+> AF3_json_1seed.py
+
+> AF3_json_20seeds.py
 
 These scripts automate the preparation of input data for protein–protein complex modeling.
 The scripts take a CSV file containing protein pairs as input, retrieve corresponding FASTA sequences from UniProt, and generate properly formatted AlphaFold 3 JSON configuration files for each modeling job.
@@ -76,8 +77,7 @@ The two scripts differ only in the number of diffusion seeds used:
 > This script submits **only protein complexes** to AlphaFold3 (AF3).  
 > It is **not** designed for modeling other molecule types.
 
-
-# Both scripts perform the following steps:
+Both scripts perform the following steps:
 - Read the input .csv file containing protein pairs to be modeled
 - Fetch FASTA sequences from UniProt using the provided UniProt IDs
 - Save FASTA files locally in each job directory
@@ -85,7 +85,7 @@ The two scripts differ only in the number of diffusion seeds used:
 - Generate AlphaFold3 JSON input files defining model parameters and sequences
 
 
-# Output Structure
+**Output Structure**
 For each job_name, the script creates a dedicated directory containing:
 ```
 <JobName>/
@@ -96,18 +96,16 @@ For each job_name, the script creates a dedicated directory containing:
 ```
 (The cache CSV file will be updated in place)
 
-
-# Dependencies
-
+**Dependencies**
 Install the required packages using pip:
 > pip install pandas requests
 
-# Usage
+**Usage**
 Run the script from the command line or within a Python environment:
 > python3 AF3_json_1seed.py
 > python3 AF3_json_20seeds.py 
 
-# Example data
+**Example data**
 The example CSV file **example_dataset.csv** is provided in the repository to illustrate the expected data format and facilitate testing of the script.
 
 
