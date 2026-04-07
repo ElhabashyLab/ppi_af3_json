@@ -1,3 +1,5 @@
+This repo contains some scripts for the scalable usage of alphafold3 for protein protein interaction. 
+
 # AF3_Submitter
 
 This Python script automates the creation of AlphaFold3-compatible JSON configuration files for protein complex modeling.
