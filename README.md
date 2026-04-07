@@ -109,7 +109,65 @@ Run the script from the command line or within a Python environment:
 **Example data**  
 The example CSV file **example_dataset.csv** is provided in the repository to illustrate the expected data format and facilitate testing of the script.
 
+##**6. Prepare Your Working Directory**
+To run AlphaFold 3 successfully, each modeling job must be organized in its own directory.
+The directory name must match the job_name specified in your input CSV file.
+
+Each job directory should have the following structure:
+
+<Job_Name>/
+│
+├── <Job_Name>.json                              # AlphaFold 3 input configuration file
+├── jobscript-alphafold3-step_1-msa_cpu.sh       # Script for MSA generation (CPU nodes)
+├── jobscript-alphafold3-step_2-prediction.sh    # Script for structure prediction (GPU nodes)
+└── parameters.inc                               # File containing paths and configuration parameters
 
 
-# License
-This script is released under the MIT License.
+All required scripts (jobscript-alphafold3-step_1-msa_cpu.sh, jobscript-alphafold3-step_2-prediction.sh, and parameters.inc) are available in this repository under the mpcdf/ subdirectory. No modifications are needed for the job scripts.
+The only file that requires editing is: parameters.inc, where you must define the correct paths to AlphaFold3 , Model parameters, intput and output files and directories.
+
+
+##**7.generate your parameterfile  **
+This script helps you to generate your paramterfile for given only your inputfile. 
+(TO BE DONE!)
+
+##**7. Run Your Calculations**
+
+This repository provides scripts to help you submit and manage AlphaFold 3 jobs efficiently on HPC systems.
+
+**Single or Small Number of Jobs**
+If you are running only a few jobs, you can submit them manually:
+> sbatch jobscript-alphafold3-step_1-msa_cpu.sh
+
+Once the MSA step is completed, submit the prediction step:
+> sbatch jobscript-alphafold3-step_2-prediction.sh
+
+**Running Multiple Jobs (Automated Submission)**
+For large-scale runs, the repository provides two helper scripts:
+- msa_af3.sh — submits MSA (CPU) jobs
+- model_af3.sh — submits prediction (GPU) jobs
+    
+How These Scripts Work
+- Must be placed in the parent directory containing all job folders
+- Automatically iterate over all job directories
+- Maintain up to: 300 CPU jobs (MSA step) and 300 GPU jobs (prediction step)
+- Check job status every 10 minutes
+- Continuously submit new jobs as others finish
+- Stop automatically once all jobs are completed
+  
+Required Modification
+Before running, update the username in both scripts:
+# User running the jobs
+USER_NAME="<your_user_name>"
+Running the Scripts
+  
+Start the MSA step:
+> nohup bash msa_af3.sh > msa_af3.log 2>&1 &
+  
+After some jobs have completed the MSA step (wait a few hours), start the prediction step:
+> nohup bash model_af3.sh > model_af3.log 2>&1 &
+
+⚠️ Important Notes
+Do not start the modeling script immediately after the MSA script
+Ensure that some MSA jobs have completed before launching prediction jobs
+Monitor log files (*.log) to track progress 
