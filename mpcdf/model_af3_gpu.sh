@@ -42,7 +42,7 @@ MAX_JOBS=300
 SLEEP_INTERVAL=$((10*60))
 
 # User running the jobs
-USER_NAME="hadel"
+USER_NAME="<your user names>"
 
 # File containing subdirectory list
 LIST_FILE="af3.list"
