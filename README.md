@@ -3,7 +3,7 @@ This repository provides a step-by-step guide for running AlphaFold3 to model pr
 
 
   
-**1. AlphaFold 3 Repository**
+## **1. AlphaFold 3 Repository**
 
 The original AlphaFold 3 implementation can be found here:
 (https://github.com/google-deepmind/alphafold3)
@@ -17,7 +17,7 @@ Access is granted at the sole discretion of Google DeepMind. Requests are typica
 **Note**: AlphaFold 3 model parameters may only be used if obtained directly from Google DeepMind and are subject to their terms of use.
    
    
-**2. MPCDF Account Setup (if applicable)**
+## **2. MPCDF Account Setup (if applicable)**
 
 This step is only relevant for employees of the Max Planck Society (MPG).
 If you already have an MPCDF account, you may skip this section.
@@ -26,14 +26,14 @@ If you do not already have an MPCDF account, please follow the instructions here
 (https://docs.mpcdf.mpg.de/faq/account.html)
    
    
-**3. Running AlphaFold 3 on MPCDF (Raven Cluster)**
+## **3. Running AlphaFold 3 on MPCDF (Raven Cluster)**
 
 AlphaFold 3 is available on the Raven cluster at MPCDF.
 To load the AlphaFold module and configure the required environment (including model weights), follow the official documentation:
 https://docs.mpcdf.mpg.de/bnb/217.html
    
    
-**4. Prepare Input List of Protein–Protein Interactions**
+## **4. Prepare Input List of Protein–Protein Interactions**
 
 Before running AlphaFold 3, you need to prepare an input file specifying the protein–protein interactions to be modeled.
 
@@ -57,7 +57,7 @@ Job2,Q9Y6K9,O00327,1,1
 > Scalable modeling of complexes with more than two unique protein types is not currently supported in this repo.
 
 
-**5. Create AlphaFold3 JSON Input File**
+## **5. Create AlphaFold3 JSON Input File**
 
 This repository includes two helper scripts for generating AlphaFold 3-compatible input files:
 
@@ -109,7 +109,7 @@ Run the script from the command line or within a Python environment:
 **Example data**  
 The example CSV file **example_dataset.csv** is provided in the repository to illustrate the expected data format and facilitate testing of the script.
 
-##**6. Prepare Your Working Directory**
+## **6. Prepare Your Working Directory**
 To run AlphaFold 3 successfully, each modeling job must be organized in its own directory.
 The directory name must match the job_name specified in your input CSV file.
 
@@ -131,7 +131,7 @@ The only file that requires editing is: parameters.inc, where you must define th
 This script helps you to generate your paramterfile for given only your inputfile. 
 (TO BE DONE!)
 
-##**7. Run Your Calculations**
+## **7. Run Your Calculations**
 
 This repository provides scripts to help you submit and manage AlphaFold 3 jobs efficiently on HPC systems.
 
@@ -157,14 +157,16 @@ How These Scripts Work
   
 Required Modification
 Before running, update the username in both scripts:
-# User running the jobs
-USER_NAME="<your_user_name>"
-Running the Scripts
+
+>User running the jobs
+>USER_NAME="<your_user_name>"
+
   
-Start the MSA step:
+Running the Scripts
+1. Start the MSA step:
 > nohup bash msa_af3.sh > msa_af3.log 2>&1 &
   
-After some jobs have completed the MSA step (wait a few hours), start the prediction step:
+2. After some jobs have completed the MSA step (wait a few hours), start the prediction step:
 > nohup bash model_af3.sh > model_af3.log 2>&1 &
 
 ⚠️ Important Notes
