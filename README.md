@@ -61,84 +61,56 @@ Job2,Q9Y6K9,O00327,1,1
 
 This repository includes two helper scripts for generating AlphaFold 3-compatible input files:
 
-> AF3_json_1seed.py
-> AF3_json_20seeds.py
+# AF3_json_1seed.py
+# AF3_json_20seeds.py
 
 These scripts automate the preparation of input data for protein–protein complex modeling.
 The scripts take a CSV file containing protein pairs as input, retrieve corresponding FASTA sequences from UniProt, and generate properly formatted AlphaFold 3 JSON configuration files for each modeling job.
 Each job is created in its own directory within the specified working directory.
 
 The two scripts differ only in the number of diffusion seeds used:
-
-> AF3_json_1seed.py uses 1 seed abd produces 5 models per job
-> AF3_json_20seeds.py uses 20 seeds and produces 100 models per job
-
-Both scripts perform the following steps:
-
-- Read the input .csv file containing protein pairs to be modeled
-- Fetch FASTA sequences from UniProt using the provided UniProt IDs
-- Save FASTA files locally in each job directory
-- Cache retrieved sequences in a CSV file to avoid redundant downloads
-- Generate AlphaFold 3 JSON input files defining model parameters and sequences
-
-
-Here the repo contains two scripts that can help you
-AF3_json_1seed.py and AF3_json_20seeds.py 
-  
-This Python script automates the creation of AlphaFold3-compatible JSON configuration files for protein complex modeling.
-It reads a list of protein pairs from a CSV file, retrieves their FASTA sequences from UniProt, saves them locally, and generates a JSON input file for each modeling job.
-
-the only difference betwweb the two files is the number of seeds
-the first add one seed which results in 5 models and the second sample using 20 seeds which results in a 100 models
-
-both take the described input file. 
- The script performs the following steps:
-- Reads a CSV file containing the protein pairs to be modeled.
-- Fetches FASTA sequences from UniProt for each UniProt ID.
-- Saves FASTA files in corresponding job directories.
-- FASTA sequences retrieved from UniProt are automatically saved to a CSV cache file to facilitate repeated use.
-- Generates AlphaFold3 JSON input files that define the modeling parameters and protein sequences.
-Each modeling job is created as a separate directory within the specified working directory, containing:
-Two FASTA files (uid1.fasta, uid2.fasta) and a JSON file (job_name.json) formatted for AlphaFold3
+- AF3_json_1seed.py uses 1 seed abd produces 5 models per job
+- AF3_json_20seeds.py uses 20 seeds and produces 100 models per job
 
 > ⚠️ **Warning:**  
 > This script submits **only protein complexes** to AlphaFold3 (AF3).  
 > It is **not** designed for modeling other molecule types.
+
+
+# Both scripts perform the following steps:
+- Read the input .csv file containing protein pairs to be modeled
+- Fetch FASTA sequences from UniProt using the provided UniProt IDs
+- Save FASTA files locally in each job directory
+- Cache retrieved sequences in a CSV file to avoid redundant downloads
+- Generate AlphaFold3 JSON input files defining model parameters and sequences
+
+
+# Output Structure
+For each job_name, the script creates a dedicated directory containing:
+```
+<JobName>/
+│
+├── <uid1>.fasta — FASTA sequence of the first protein
+├── <uid2>.fasta — FASTA sequence of the second protein
+└── <JobName>.json — AlphaFold 3 input configuration file
+```
+(The cache CSV file will be updated in place)
+
 
 # Dependencies
 
 Install the required packages using pip:
 > pip install pandas requests
 
-
-**2. Script Parameters**
-User must specify in the script:
-- csv_file_path = "<path #to the list of proteins>.csv"
-- cache_file_path = "<path #to the CSV file listing previously downloaded UniProt FASTA sequences>"
-- working_dir = "<path #to where the files will be generated>"
-- model_seeds = [3141592]  # You can define one or multiple random seeds
-
 # Usage
 Run the script from the command line or within a Python environment:
 > python3 AF3_json_1seed.py
 > python3 AF3_json_20seeds.py 
 
-
-# Output Structure
-The script will generate one directory per job in the specified working directory.
-Each job directory will contain:
-```
-<JobName>/
-│
-├── <uid1>.fasta
-├── <uid2>.fasta
-└── <JobName>.json
-```
-(The cache CSV file will be updated in place)
-
-
 # Example data
 The example CSV file **example_dataset.csv** is provided in the repository to illustrate the expected data format and facilitate testing of the script.
+
+
 
 # License
 This script is released under the MIT License.
