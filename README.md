@@ -51,22 +51,48 @@ job_name,uid1,uid2,uid1_copies,uid2_copies
 Job1,P69905,P68871,2,2
 Job2,Q9Y6K9,O00327,1,1
 ```
-The current input format supports a maximum of two distinct proteins per job, with the option to specify any number of copies for each protein. 
-Scalable modeling of complexes with more than two unique protein types is not currently supported in this repo.
-   
-   
-# AF3_Submitter
 
+> ⚠️ **Warning:**  
+> The current input format supports a maximum of two distinct proteins per job, with the option to specify any number of copies for each protein. 
+> Scalable modeling of complexes with more than two unique protein types is not currently supported in this repo.
+
+
+**5. Create AlphaFold3 JSON Input File**
+
+This repository includes two helper scripts for generating AlphaFold 3-compatible input files:
+
+> AF3_json_1seed.py
+> AF3_json_20seeds.py
+
+These scripts automate the preparation of input data for protein–protein complex modeling.
+The scripts take a CSV file containing protein pairs as input, retrieve corresponding FASTA sequences from UniProt, and generate properly formatted AlphaFold 3 JSON configuration files for each modeling job.
+Each job is created in its own directory within the specified working directory.
+
+The two scripts differ only in the number of diffusion seeds used:
+
+> AF3_json_1seed.py uses 1 seed abd produces 5 models per job
+> AF3_json_20seeds.py uses 20 seeds and produces 100 models per job
+
+Both scripts perform the following steps:
+
+- Read the input .csv file containing protein pairs to be modeled
+- Fetch FASTA sequences from UniProt using the provided UniProt IDs
+- Save FASTA files locally in each job directory
+- Cache retrieved sequences in a CSV file to avoid redundant downloads
+- Generate AlphaFold 3 JSON input files defining model parameters and sequences
+
+
+Here the repo contains two scripts that can help you
+AF3_json_1seed.py and AF3_json_20seeds.py 
+  
 This Python script automates the creation of AlphaFold3-compatible JSON configuration files for protein complex modeling.
 It reads a list of protein pairs from a CSV file, retrieves their FASTA sequences from UniProt, saves them locally, and generates a JSON input file for each modeling job.
 
-> ⚠️ **Warning:**  
-> This script submits **only protein complexes** to AlphaFold3 (AF3).  
-> It is **not** designed for modeling other molecule types.
+the only difference betwweb the two files is the number of seeds
+the first add one seed which results in 5 models and the second sample using 20 seeds which results in a 100 models
 
-# Overview
-
-The script performs the following steps:
+both take the described input file. 
+ The script performs the following steps:
 - Reads a CSV file containing the protein pairs to be modeled.
 - Fetches FASTA sequences from UniProt for each UniProt ID.
 - Saves FASTA files in corresponding job directories.
@@ -75,28 +101,15 @@ The script performs the following steps:
 Each modeling job is created as a separate directory within the specified working directory, containing:
 Two FASTA files (uid1.fasta, uid2.fasta) and a JSON file (job_name.json) formatted for AlphaFold3
 
+> ⚠️ **Warning:**  
+> This script submits **only protein complexes** to AlphaFold3 (AF3).  
+> It is **not** designed for modeling other molecule types.
+
 # Dependencies
 
 Install the required packages using pip:
 > pip install pandas requests
 
-
-# Input
-**1. CSV File**
-The input CSV must contain the following columns:
-- **Column**, **Name**,	**Description**
-- **job_name**	Unique name for the modeling job (used to create directory and output files).
-- **uid1**	UniProt ID of the first protein.
-- **uid2**	UniProt ID of the second protein.
-- **uid1_copies**	Number of copies of the first protein to include in the model.
-- **uid2_copies**	Number of copies of the second protein to include in the model.
-
-Example:
-```csv
-job_name,uid1,uid2,uid1_copies,uid2_copies
-Job1,P69905,P68871,2,2
-Job2,Q9Y6K9,O00327,1,1
-```
 
 **2. Script Parameters**
 User must specify in the script:
@@ -107,7 +120,8 @@ User must specify in the script:
 
 # Usage
 Run the script from the command line or within a Python environment:
-> python af3_submitter.py
+> python3 AF3_json_1seed.py
+> python3 AF3_json_20seeds.py 
 
 
 # Output Structure
