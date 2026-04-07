@@ -1,7 +1,7 @@
 i#!/bin/bash
 
 #one need to run this first
-#ls -d $PWD/* > msa.list
+ls -d $PWD/* > msa.list
 
 #this is how to run in the backgroung 
 #nohup bash msa_af3.sh  > msa_af3.log 2>&1 &
