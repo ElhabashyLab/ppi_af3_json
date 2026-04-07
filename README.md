@@ -85,7 +85,7 @@ Both scripts perform the following steps:
 - Generate AlphaFold3 JSON input files defining model parameters and sequences
 
 
-**Output Structure**
+**Output Structure**  
 For each job_name, the script creates a dedicated directory containing:
 ```
 <JobName>/
@@ -96,17 +96,17 @@ For each job_name, the script creates a dedicated directory containing:
 ```
 (The cache CSV file will be updated in place)
 
-**Dependencies**
+**Dependencies**  
 Install the required packages using pip:
 > pip install pandas requests
 
-**Usage**
+**Usage**  
 Run the script from the command line or within a Python environment:
 > python3 AF3_json_1seed.py
 
 > python3 AF3_json_20seeds.py 
 
-**Example data**
+**Example data**  
 The example CSV file **example_dataset.csv** is provided in the repository to illustrate the expected data format and facilitate testing of the script.
 
 
